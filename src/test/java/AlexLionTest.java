@@ -31,10 +31,16 @@ public class AlexLionTest {
     }
 
     @Test
-    public void testGetFriends() {
+    public void testGetFriendsReturnsCorrectList() {
         List<String> expected = List.of("Марти", "Глория", "Мелман");
         assertEquals(expected, alex.getFriends());
+    }
+    @Test
+    public void testGetFriendsSize() {
         assertEquals(3, alex.getFriends().size());
+    }
+    @Test
+    public void testGetFriendsContainsMarty() {
         assertTrue(alex.getFriends().contains("Марти"));
     }
 
@@ -49,10 +55,14 @@ public class AlexLionTest {
     }
 
     @Test
-    public void testGetFood() throws Exception {
+    public void testGetFoodReturnsExpectedList() throws Exception {
         List<String> expectedFood = List.of("Животные", "Птицы", "Рыба");
         // Проверяем, что мок возвращает ожидаемый результат
         assertEquals(expectedFood, alex.getFood());
+    }
+        @Test
+        public void testGetFoodCallsFelineGetFood() throws Exception {
+            alex.getFood();
         // Проверяем, что метод действительно вызвался
         verify(mockFeline, atLeastOnce()).getFood("Хищник");
     }
